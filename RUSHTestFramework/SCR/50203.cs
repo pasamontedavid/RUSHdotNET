@@ -87,6 +87,229 @@ namespace RUSHTestFramework.SCR
         }
 
 
+        public void Activity1(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("HY171244", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Processes approved RFP and prepares APV");
+            ActivityApprove();
+        }
+
+
+        public void Activity2(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("HY171244", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves APV");
+            ActivityApprove();
+        }
+
+        public void Activity3(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("SF211665", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Receives APV and prepares check");
+            ActivityApprove();
+        }
+
+        public void Activity4(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("SF211665", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Routing and Approval of Check");
+            ActivityApprove();
+        }
+
+        public void Activity5(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("IT00", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Liquidation of Advances");
+            ActivityApprove();
+        }
+
+        public void Activity6(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("HY171244", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("GR/IR Creation");
+            ActivityApprove();
+        }
+
+        public void Activity6Construction(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("AP191481", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("GR/IR Creation");
+            ActivityApprove();
+        }
+
+        public void Activity7(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("JM211673", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Recording of Liquidation of Advances in SAP");
+            ActivityApprove();
+        }
+
+        public void Activity7construction(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("JC110470", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Recording of Liquidation of Advances in SAP");
+            ActivityApprove();
+        }
+
+        public void Activity7bldrc(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("JC110470", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Recording of Liquidation of Advances in SAP");
+            ActivityApprove();
+        }
+
+        public void Activity8(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("NC181328", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves Journal Voucher");
+            ActivityApprove();
+        }
+        public void Activity8BLDRC(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("GD221871", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves Journal Voucher");
+            ActivityApprove();
+        }
+
+        public void Activity8Construction(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("NC181328", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves Journal Voucher");
+            ActivityApprove();
+        }
+
+        public void Activity9(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("IT00", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Receives Feedback and Closes the Ticket");
+            ActivityApprove();
+        }
 
 
         [Test]
@@ -135,7 +358,7 @@ namespace RUSHTestFramework.SCR
             ApprovalBLRDC("23022798799");
 
         }
-
+        [Test]
         public void approvalF()
         {
             ApprovalDept("23022798800");
@@ -143,6 +366,21 @@ namespace RUSHTestFramework.SCR
             ApprovalDiv("23022798800");
             logout();
             ApprovalLG("23022798800");
+
+        }
+
+
+        public void ActivityApprovemod()
+        {
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoActivityApprove().Click();
+            Assert.AreEqual(2, driver.Value.WindowHandles.Count);
+            parentWindow = driver.Value.CurrentWindowHandle;
+
+            driver.Value.SwitchTo().Window(driver.Value.WindowHandles[1]);
+            workqueuepage.gotoSimpleApprovalPassword().SendKeys("12345678");
+            workqueuepage.gotoSimpleApprovalSubmit().Click();
+            driver.Value.SwitchTo().Window(parentWindow);
 
         }
 

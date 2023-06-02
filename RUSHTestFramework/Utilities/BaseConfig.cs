@@ -31,7 +31,7 @@ namespace RUSHTestFramework.Utilities
         public WebDriverWait wait;
 
         public Actions act;
-        String parentWindow;
+        public String parentWindow;
         //report
         [OneTimeSetUp]
         public void reportSetup()
