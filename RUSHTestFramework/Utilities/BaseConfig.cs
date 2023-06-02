@@ -107,6 +107,17 @@ namespace RUSHTestFramework.Utilities
             driver.Value.Quit();
         }
 
+        public void logout()
+        {
+            driver.Value.FindElement(By.CssSelector(".toplink")).Click();
+            //Control/Handle alert to click OK
+            driver.Value.SwitchTo().Alert().Accept();
+            //Control the main Browser
+            driver.Value.SwitchTo().DefaultContent();
+
+        }
+
+
         public MediaEntityModelProvider captureScreenShot(IWebDriver driver, String ScreenshotName)
         {
 
