@@ -12,7 +12,7 @@ namespace RUSHTestFramework.SCR
 {
     public class _50203:BaseConfig
     {
-        String RequestNo= "23052798804";
+        String RequestNo= "23082798815";
         public void ApprovalDept(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
@@ -118,13 +118,77 @@ namespace RUSHTestFramework.SCR
             ActivityDescriptionChecker("Processes approved RFP and prepares APV");
             ActivityApprovemod();
         }
+        
 
+        public void Activity1Construction(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("RD161107", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Processes approved RFP and prepares APV");
+            ActivityApprovemod();
+        }
+        
 
+        public void Activity1Bldrc(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("RY221937", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Processes approved RFP and prepares APV");
+            ActivityApprovemod();
+        }
         public void Activity2(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
             Thread.Sleep(2000);
             LOGINActions("NC181328", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves APV");
+            ActivityApprove();
+        }
+        
+        public void Activity2Construction(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("NC181328", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("Checks and approves APV");
+            ActivityApprove();
+        }
+
+        public void Activity2Bldrc(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("GD221871", "12345678");
             Thread.Sleep(2000);
             WorkQueuePage();
             Thread.Sleep(3000);
@@ -200,11 +264,27 @@ namespace RUSHTestFramework.SCR
             ActivityApprove();
         }
 
-        public void Activity6Construction(String RequestNo)
+        public void Activity6Constructionbldrc(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
             Thread.Sleep(2000);
             LOGINActions("AP191481", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            ActivityDescriptionChecker("GR/IR Creation");
+            ActivityApprove();
+        }
+
+        public void Activity6BldrcNonCons(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("HY171244", "12345678");
             Thread.Sleep(2000);
             WorkQueuePage();
             Thread.Sleep(3000);
@@ -252,7 +332,7 @@ namespace RUSHTestFramework.SCR
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
             Thread.Sleep(2000);
-            LOGINActions("JC110470", "12345678");
+            LOGINActions("RY221937", "12345678");
             Thread.Sleep(2000);
             WorkQueuePage();
             Thread.Sleep(3000);
@@ -331,9 +411,9 @@ namespace RUSHTestFramework.SCR
         [Test]
         public void approvalA()
         {
-            ApprovalDept("23082798805");
+            ApprovalDept(RequestNo);
             logout();
-            ApprovalDiv("23082798805");
+            ApprovalDiv(RequestNo);
         }
 
 
@@ -407,7 +487,7 @@ namespace RUSHTestFramework.SCR
 
             driver.Value.SwitchTo().Window(driver.Value.WindowHandles[1]);
             IWebElement trantypes = driver.Value.FindElement(By.Id("0423_01_COND"));
-            SelectDropdown(trantypes, "Cash Advance Request & Liquidation");
+            SelectDropdown(trantypes, "PO");
             driver.Value.FindElement(By.Id("txtPassword3")).SendKeys("12345678");
             driver.Value.FindElement(By.Id("cmdConditional")).Click();
             driver.Value.SwitchTo().Window(parentWindow);
@@ -487,21 +567,26 @@ namespace RUSHTestFramework.SCR
 
         public void Runner()
         {
-            Activity1(RequestNo);
-            logout();
-            Activity2(RequestNo);
-            logout();
-            Activity3(RequestNo);
-            logout();
-            Activity4(RequestNo);
-            logout();
-            Activity5(RequestNo);
-            logout();
-            Activity7(RequestNo);
-            logout();
-            Activity8(RequestNo);
-            logout();
-            Activity9(RequestNo);
+
+            Activity1Construction(RequestNo);
+
+            //Activity2(RequestNo);
+            //logout();
+            //Activity3(RequestNo);
+            //logout();
+            //Activity4(RequestNo);
+            //logout();
+            //Activity5(RequestNo);
+            //logout();
+            //Activity6(RequestNo);
+            //logout();
+            //Activity7(RequestNo);
+            //logout();
+            //Activity8(RequestNo);
+            //logout();
+            //Activity9(RequestNo);
+            //logout();
+
         }
     }
 }
