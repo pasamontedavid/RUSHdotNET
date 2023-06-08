@@ -1,4 +1,6 @@
-﻿using RUSHTestFramework.pageObjects;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using RUSHTestFramework.pageObjects;
 using RUSHTestFramework.Utilities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace RUSHTestFramework.SCR
 {
     public class _50203:BaseConfig
     {
-        
+        String RequestNo= "23052798804";
         public void ApprovalDept(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
@@ -85,13 +87,27 @@ namespace RUSHTestFramework.SCR
             workqueuepage.gotoSearchbutton().Click();
             SimpleApprove();
         }
-
+        
+         public void ApprovalPPD(String RequestNo)
+        {
+            SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
+            Thread.Sleep(2000);
+            LOGINActions("RB232095", "12345678");
+            Thread.Sleep(2000);
+            WorkQueuePage();
+            Thread.Sleep(3000);
+            WorkQueuePage workqueuepage = new WorkQueuePage(getDriver());
+            workqueuepage.gotoSearchicon().Click();
+            workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
+            workqueuepage.gotoSearchbutton().Click();
+            SimpleApprove();
+        }
 
         public void Activity1(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
             Thread.Sleep(2000);
-            LOGINActions("HY171244", "12345678");
+            LOGINActions("JM211673", "12345678");
             Thread.Sleep(2000);
             WorkQueuePage();
             Thread.Sleep(3000);
@@ -100,7 +116,7 @@ namespace RUSHTestFramework.SCR
             workqueuepage.gotoRequestNoTxt().SendKeys(RequestNo);
             workqueuepage.gotoSearchbutton().Click();
             ActivityDescriptionChecker("Processes approved RFP and prepares APV");
-            ActivityApprove();
+            ActivityApprovemod();
         }
 
 
@@ -108,7 +124,7 @@ namespace RUSHTestFramework.SCR
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
             Thread.Sleep(2000);
-            LOGINActions("HY171244", "12345678");
+            LOGINActions("NC181328", "12345678");
             Thread.Sleep(2000);
             WorkQueuePage();
             Thread.Sleep(3000);
@@ -315,57 +331,69 @@ namespace RUSHTestFramework.SCR
         [Test]
         public void approvalA()
         {
-            ApprovalDept("23012798795");
+            ApprovalDept("23082798805");
             logout();
-            ApprovalDiv("23012798795");
+            ApprovalDiv("23082798805");
         }
 
 
         [Test]
         public void approvalB()
         {
-            ApprovalDept("23022798796");
+
+            ApprovalDept("23082798806");
             logout();
-            ApprovalDiv("23022798796");
+            ApprovalDiv("23082798806");
             logout();
-            ApprovalGMPres("23022798796");
+            ApprovalGMPres("23082798806");
         }
 
         [Test]
         public void approvalC()
         {
-            ApprovalDept("23022798797");
+            ApprovalDept("23082798807");
             logout();
-            ApprovalDiv("23022798797");
+            ApprovalDiv("23082798807");
             logout();
-            ApprovalGMPres("23022798797");
+            ApprovalGMPres("23082798807");
         }
 
         [Test]
         public void approvalD()
         {
-            ApprovalDept("23022798798");
+            ApprovalDept("23082798808");
             
         }
 
         [Test]
         public void approvalE()
         {
-            ApprovalDept("23022798799");
+            ApprovalDept("23082798809");
             logout();
-            ApprovalDiv("23022798799");
+            ApprovalDiv("23082798809");
             logout();
-            ApprovalBLRDC("23022798799");
+            ApprovalBLRDC("23082798809");
 
         }
         [Test]
         public void approvalF()
         {
-            ApprovalDept("23022798800");
+            ApprovalDept("23082798810");
             logout();
-            ApprovalDiv("23022798800");
+            ApprovalDiv("23082798810");
             logout();
-            ApprovalLG("23022798800");
+            ApprovalLG("23082798810");
+
+        }
+
+        [Test]
+        public void approvalG()
+        {
+            ApprovalDept("23082798811");
+            logout();
+            ApprovalDiv("23082798811");
+            logout();
+            ApprovalPPD("23082798811");
 
         }
 
@@ -378,11 +406,102 @@ namespace RUSHTestFramework.SCR
             parentWindow = driver.Value.CurrentWindowHandle;
 
             driver.Value.SwitchTo().Window(driver.Value.WindowHandles[1]);
-            workqueuepage.gotoSimpleApprovalPassword().SendKeys("12345678");
-            workqueuepage.gotoSimpleApprovalSubmit().Click();
+            IWebElement trantypes = driver.Value.FindElement(By.Id("0423_01_COND"));
+            SelectDropdown(trantypes, "Cash Advance Request & Liquidation");
+            driver.Value.FindElement(By.Id("txtPassword3")).SendKeys("12345678");
+            driver.Value.FindElement(By.Id("cmdConditional")).Click();
             driver.Value.SwitchTo().Window(parentWindow);
 
         }
 
+
+
+        public void FillupRequest(String ReqCat, String ExpCat, String Company, String GrpCat, String TranType)
+        {
+            LOGINActions("IT00", "12345678");
+            CREATEREQUESTActions("ACCOUNTING REQUESTS", "REQUEST FOR PAYMENT - COD / Payment First & Liquidation", "SCR_RSH_0423_01");
+
+            if(ReqCat != "")
+            {
+                IWebElement RequestCategories = driver.Value.FindElement(By.Id("FLD_042301_REQST_CAT"));
+                SelectDropdown(RequestCategories, ReqCat);
+            }
+           
+            if(ExpCat != "")
+            {
+                IWebElement ExpenseCategories = driver.Value.FindElement(By.Id("FLD_042301_EXPNSE"));
+                SelectDropdown(ExpenseCategories, ExpCat);
+            }
+
+
+            if (Company != "")
+            {
+                IWebElement Companies = driver.Value.FindElement(By.Id("FLD_042301_COMP"));
+                SelectDropdown(Companies, Company);
+            }
+
+            
+
+            driver.Value.FindElement(By.Id("FLD_042301_CC")).SendKeys("TESTING");
+
+            if (GrpCat != "")
+            {
+                IWebElement GroupCategories = driver.Value.FindElement(By.Id("FLD_TARGET_ACC"));
+                SelectDropdown(GroupCategories, GrpCat);
+            }
+
+            if (TranType != "")
+            {
+                IWebElement TransactionTypes = driver.Value.FindElement(By.Id("FLD_042301_TRNSCT"));
+                SelectDropdown(TransactionTypes, TranType);
+            }
+
+            
+
+            driver.Value.FindElement(By.Id("FLD_042301_TR_DT")).SendKeys("Testing");
+            driver.Value.FindElement(By.Id("FLD_042301_IVSOBS")).SendKeys("Testing");
+            driver.Value.FindElement(By.Id("FLD_042301_PAYNAM")).SendKeys("Testing");
+            driver.Value.FindElement(By.Id("FLD_042301_GROSS")).SendKeys("1000000");
+            driver.Value.FindElement(By.Id("FLD_042301_EX_RFP")).SendKeys("1000000");
+            driver.Value.FindElement(By.Id("FLD_042301_EXEMAIL")).SendKeys("1000000");
+
+            SaveRequest();
+            FinalizeRequest();
+
+            RequestNo = GetRequestNo();
+        }
+
+
+
+        [Test]
+
+        public void aaaaCreateReq()
+        {
+            FillupRequest("b. Approval up to President", "", "", "", "");
+        }
+
+
+
+
+        [Test]
+
+        public void Runner()
+        {
+            Activity1(RequestNo);
+            logout();
+            Activity2(RequestNo);
+            logout();
+            Activity3(RequestNo);
+            logout();
+            Activity4(RequestNo);
+            logout();
+            Activity5(RequestNo);
+            logout();
+            Activity7(RequestNo);
+            logout();
+            Activity8(RequestNo);
+            logout();
+            Activity9(RequestNo);
+        }
     }
 }

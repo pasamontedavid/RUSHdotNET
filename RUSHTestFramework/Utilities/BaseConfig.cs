@@ -264,7 +264,8 @@ namespace RUSHTestFramework.Utilities
                     //Finalize Request
                     driver.Value.FindElement(By.Id("btnSubmit")).Click();
 
-                    //Control/Handle Alert to Click CANCEL
+            //Control/Handle Alert to Click CANCEL
+                    Thread.Sleep(1000);
                     driver.Value.SwitchTo().Alert().Dismiss();
                     wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlMatches("http://rush.sit.federalland.ph/RUSH_SIT/REQSTQUEUE/MYREQUESTS.aspx"));
                 }
