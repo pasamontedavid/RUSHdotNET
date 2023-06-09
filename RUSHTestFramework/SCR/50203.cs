@@ -546,7 +546,7 @@ namespace RUSHTestFramework.SCR
             driver.Value.FindElement(By.Id("FLD_042301_EXEMAIL")).SendKeys("1000000");
 
             SaveRequest();
-            FinalizeRequest();
+            Finalize();
 
             RequestNo = GetRequestNo();
         }
@@ -587,6 +587,19 @@ namespace RUSHTestFramework.SCR
             //Activity9(RequestNo);
             //logout();
 
+        }
+
+
+        private void Finalize()
+        {
+            //Finalize Request
+            driver.Value.FindElement(By.Id("btnSubmit")).Click();
+
+            //Control/Handle Alert to Click CANCEL
+            Thread.Sleep(1000);
+            driver.Value.SwitchTo().Alert().Dismiss();
+            driver.Value.SwitchTo().Alert().Dismiss();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlMatches("http://rush.sit.federalland.ph/RUSH_SIT/REQSTQUEUE/MYREQUESTS.aspx"));
         }
     }
 }
