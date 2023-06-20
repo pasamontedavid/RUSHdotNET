@@ -12,7 +12,7 @@ namespace RUSHTestFramework.SCR
 {
     public class _50203:BaseConfig
     {
-        String RequestNo= "23082798815";
+        String RequestNo= "23142798823";
         public void ApprovalDept(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
@@ -568,8 +568,9 @@ namespace RUSHTestFramework.SCR
         public void Runner()
         {
 
-            Activity1Construction(RequestNo);
-
+            
+            Activity1(RequestNo);
+            
             //Activity2(RequestNo);
             //logout();
             //Activity3(RequestNo);
