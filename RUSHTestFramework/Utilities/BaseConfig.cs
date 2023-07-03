@@ -29,7 +29,7 @@ namespace RUSHTestFramework.Utilities
         public ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();
 
         public WebDriverWait wait;
-
+        
         public Actions act;
         public String parentWindow;
         //report

@@ -12,7 +12,7 @@ namespace RUSHTestFramework.SCR
 {
     public class _50203:BaseConfig
     {
-        String RequestNo= "23142798823";
+        String RequestNo;
         public void ApprovalDept(String RequestNo)
         {
             SCR_RSH_0323_07 obj = new SCR_RSH_0323_07(getDriver());
@@ -554,10 +554,82 @@ namespace RUSHTestFramework.SCR
 
 
         [Test]
-
-        public void aaaaCreateReq()
+        [TestCase("a. Approval up to Division Head")]
+        [TestCase("b. Approval up to President")]
+        [TestCase("c. Approval up to GM")]
+        [TestCase("d. Approval up to Department Head")]
+        [TestCase("e. Approval up to Division Head & BLRDC Head")]
+        [TestCase("f. Approval up to Division Head & LG Head")]
+        [TestCase("g. Approval up to Division Head & PPD Head")]
+        public void aaaaCreateReq(String approval)
         {
-            FillupRequest("b. Approval up to President", "", "", "", "");
+            FillupRequest(approval, "", "", "", "");
+            logout();
+            switch (approval)
+            {
+                case "a. Approval up to Division Head":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+
+                case "b. Approval up to President":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    ApprovalGMPres(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+
+                    break;
+                case "c. Approval up to GM":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    ApprovalGMPres(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+                case "d. Approval up to Department Head":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+
+                case "e. Approval up to Division Head & BLRDC Head":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    ApprovalBLRDC(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+
+                case "f. Approval up to Division Head & LG Head":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    ApprovalLG(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+
+                case "g. Approval up to Division Head & PPD Head":
+                    ApprovalDept(RequestNo);
+                    logout();
+                    ApprovalDiv(RequestNo);
+                    logout();
+                    ApprovalPPD(RequestNo);
+                    logout();
+                    Activity1(RequestNo);
+                    break;
+            }
         }
 
 
@@ -567,8 +639,12 @@ namespace RUSHTestFramework.SCR
 
         public void Runner()
         {
-
-            
+            ApprovalDept(RequestNo);
+            logout();
+            ApprovalDiv(RequestNo);
+            logout();
+            ApprovalGMPres(RequestNo);
+            logout();    
             Activity1(RequestNo);
             
             //Activity2(RequestNo);
